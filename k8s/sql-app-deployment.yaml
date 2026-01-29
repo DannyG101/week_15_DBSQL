@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-app-deployment
+  labels:
+    app: sql-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sql-app
+  template:
+    metadata:
+      labels:
+        app: sql-app
+    spec:
+      containers:
+      - name: sql-app
+        image: docker.io/dannygoldberg/sql-app:v1
+        ports:
+        - containerPort: 8000
+
+
